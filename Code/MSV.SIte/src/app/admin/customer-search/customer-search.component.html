@@ -1,0 +1,162 @@
+<accordion [isAnimated]="true">
+  <accordion-group heading="Pesquisa de Clientes e Contratos" [isOpen]="isOpen">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Empresa:</label>
+            <input [(ngModel)]="empresa"
+              [typeahead]="empresas"
+              typeaheadOptionField="des_RazaoSocial"
+              (typeaheadOnSelect)="typeaheadOnSelectEmpresa($event)"
+              class="form-control form-control-sm"
+              placeholder="Digite para iniciar a pesquisa"
+              id="inputEmpresa">
+          </div>
+          <div class="col-md-6">
+            <label>Filial:</label>
+            <input [(ngModel)]="filial"
+              [typeahead]="filiais"
+              typeaheadOptionField="nom_Abvd_Nom_Filial"
+              (typeaheadOnSelect)="typeaheadOnSelectFilial($event)"
+              class="form-control form-control-sm"
+              placeholder="Digite para iniciar a pesquisa"
+              id="inputFilial">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Código Reduzido:</label>
+            <input [(ngModel)]="codReduzido"
+              class="form-control form-control-sm"
+              id="inputCodReduzido">
+          </div>
+          <div class="col-md-6">
+            <label>Contrato:</label>
+            <input [(ngModel)]="contrato"
+              class="form-control form-control-sm"
+              id="inputContrato">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Cliente:</label>
+            <input [(ngModel)]="cliente"
+              [typeahead]="clientes"
+              typeaheadOptionField="cod_Cnpj_Nom_RazaoSocial"
+              (typeaheadOnSelect)="typeaheadOnSelectCliente($event)"
+              class="form-control form-control-sm"
+              placeholder="Digite para iniciar a pesquisa"
+              id="inputCliente">
+          </div>
+          <div class="col-md-6">
+            <label>Subcliente:</label>
+            <input [(ngModel)]="subCliente"
+              [typeahead]="subClientes"
+              typeaheadOptionField="cod_Cnpj_Nom_RazaoSocial"
+              (typeaheadOnSelect)="typeaheadOnSelectSubcliente($event)"
+              class="form-control form-control-sm"
+              placeholder="Digite para iniciar a pesquisa"
+              id="inputSubcliente">
+          </div>
+        </div>
+        <div class="row" *ngIf="false">
+          <div class="col-md-3" >
+            <label>Aditivo / Lote:</label>
+            <input [(ngModel)]="aditivo"
+              typeaheadOptionField="name"
+              class="form-control form-control-sm"
+              [disabled]="!cliente"
+              id="inputAditivo">
+          </div>
+          <div class="col-md-3">
+            <label>Tipo Subcliente:</label>
+            <select class="form-control form-control-sm">
+              <option value="" selected>Todos</option>
+              <option *ngFor="let subclienteType of subclientTypes" [ngValue]="subclienteType">{{subclienteType.des_TpSubCliente}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Família do Serviço:</label>
+            <select class="form-control form-control-sm" [(ngModel)]="selectedFamilia">
+              <option *ngFor="let family of familiasProduto" [ngValue]="family">{{family.nom_FamiliaProduto}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row" style="padding-top: 15px;">
+          <div class="col-md-9">
+            <div class="custom-control custom-checkbox">
+              <input [(ngModel)]="exibirInativos" type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Exibir inativos</label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-right">
+              <button type="button" class="btn btn-secondary pull-right" style="margin-right: 5px;" (click)="cancel()">
+                Cancelar
+              </button>
+              <button type="button" class="btn btn-primary pull-right" (click)="search(); isOpen = !isOpen">
+                Pesquisar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </accordion-group>
+</accordion>
+
+<div class="card" *ngIf="mostrarResultados">
+  <div class="card-body">
+    <div class="col-md-12">
+      <app-list
+        [items]="contratosSubclientes"
+        emptyDataText="Não existem dados">
+        <ng-template let-item="item">
+          <div class="container-fluid">
+            <div id="IdRowCustomerSearch" class="row pointer" (click)="showDetails(item)">
+              <div class="col-md-1 overflow">
+                <span class="list-item-label">Empresa</span>
+                <span class="list-item-value" [innerHtml]="item.empresa"></span>
+              </div>
+              <div class="col-md-1 overflow">
+                <span class="list-item-label">Filial</span>
+                <span class="list-item-value" [innerHtml]="item.filial"></span>
+              </div>
+              <div class="col-md-2 overflow">
+                <span class="list-item-label">Cliente</span>
+                <span class="list-item-value" [innerHtml]="item.cliente"></span>
+              </div>
+              <div class="col-md-1 overflow">
+                <span class="list-item-label">CNPJ</span>
+                <span class="list-item-value" [innerHtml]="item.cnpj ? (item.cnpj.substring(1) | mask: '00.000.000/0000-00') : ''"></span>
+              </div>
+              <div class="col-md-1 overflow">
+                <span class="list-item-label">Tipo de Contrato</span>
+                <span class="list-item-value" [innerHtml]="item.tipoContrato"></span>
+              </div>
+              <div class="col-md-1 overflow">
+                <span class="list-item-label">Contrato</span>
+                <span class="list-item-value" [innerHtml]="item.contrato"></span>
+              </div>
+              <div class="col-md-1 overflow">
+                <span class="list-item-label">Reduzido</span>
+                <span class="list-item-value" [innerHtml]="item.reduzido"></span>
+              </div>
+              <div class="col-md-2 overflow">
+                <span class="list-item-label">SubCliente</span>
+                <span class="list-item-value" [innerHtml]="item.pontoOperacional ? item.pontoOperacional : item.subCliente"></span>
+              </div>
+              <div class="col-md-1 overflow">
+                <span class="list-item-label">Logradouro</span>
+                <span class="list-item-value" [innerHtml]="item.logradouro + ', ' + item.numero"></span>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </app-list>
+    </div>
+  </div>
+</div>

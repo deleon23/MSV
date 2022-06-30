@@ -1,0 +1,69 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Pontos de Atendimento</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Selecionar Ponto de Atendimento</strong>
+          </div>
+          <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="stringFilter">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <app-list
+                            [items]="pontosAtendimentoFilter(stringFilter)"
+                            emptyDataText="Não existem Dados">
+                            <ng-template let-item="item">
+                              <!-- <div class="col-md-12 pointer" (click)="carregaPontoAtendimento(item.id)"> -->
+
+                                <div class="col-md-1">
+                                  <span class="list-item-label">Sel.</span>
+                                  <div class="custom-control custom-checkbox list-control">
+                                    <input type="checkbox" class="custom-control-input" name="branchs" id="linked_{{item.nom_PontoAtendimento}}"
+                                      value="linked_{{item.id_ContratoPontoAtendimento}}" (change)="changeServicePointOriginSelected($event, item)"
+                                      [(ngModel)]="item.check">
+                                    <label class="custom-control-label" for="linked_{{item.nom_PontoAtendimento}}"></label>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-3 pointer">
+                                  <span class="list-item-value" [innerHtml]="item.id_ContratoPontoAtendimento"></span>
+                                </div>
+                                <div class="col-md-4 pointer">
+                                <span class="list-item-value" [innerHtml]="item.nom_PontoAtendimento"></span>
+                              </div>
+                              <div class="col-md-4 pointer">
+                                <span class="list-item-value" [innerHtml]="item.nom_Logradouro"></span>
+                              </div>
+                               </ng-template>
+                          </app-list>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12">
+        <div class="text-right">
+          <button type="button" class="btn btn-sm btn-primary pull-right" (click)="selecionarPonto()" style="margin-top: 10px;">
+            Selecionar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

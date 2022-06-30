@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="7.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MSV.Domain\MSV.Domain.csproj" />
+    <ProjectReference Include="..\MSV.Infra.Data\MSV.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

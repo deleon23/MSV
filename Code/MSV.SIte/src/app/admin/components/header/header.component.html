@@ -1,0 +1,15 @@
+<div class="header" [ngClass]="{'collapsed': collapsed}">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="float-left">
+          <div class="hamburger sidebar-toggle" [ngClass]="{'is-active': collapsed}" (click)="toggleCollapsed()">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

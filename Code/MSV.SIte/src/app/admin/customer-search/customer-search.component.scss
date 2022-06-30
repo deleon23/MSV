@@ -1,0 +1,26 @@
+.list-item-label {
+  color: #bbbbbb;
+  display: block;
+  text-transform: uppercase;
+  font-size: x-small;
+}
+
+.list-item-value {
+  &.small {
+    font-size: medium;
+  }
+  &.underline {
+    color: #5873fe;
+    text-decoration: underline;
+  }
+  &.bold {
+    font-weight: bold;
+  }
+  &.nowrap {
+    white-space: nowrap;
+  }
+}
+
+#IdRowCustomerSearch:hover{
+  color: #ffffff;
+}

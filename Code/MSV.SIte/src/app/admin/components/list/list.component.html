@@ -1,0 +1,38 @@
+<div class="list">
+    <ul *ngIf="items.length">
+      <li *ngFor="let item of listItems; index as i">
+        <div class="list-item page-break" [ngClass]="{ 'expandable': showDetails, 'small': isSmall, 'page-break': isPrintable, 'no-border': noBorder }">
+          <div class="actions-block">
+            <a class="btn-action btn-edit"
+              *ngIf="showEdit"
+              (click)="editItem(item)"
+              [innerHtml]=" editText || 'Edit Item'"></a>
+
+            <a class="btn-action btn-delete"
+              *ngIf="showDelete"
+              (click)="deleteItem(item)"
+              [innerHtml]="deleteText || 'Delete Item'"></a>
+          </div>
+
+          <div class="expand-block">
+            <a class="btn-expand"
+              *ngIf="showDetails"
+              (click)="expandItem(item, !item.details)"
+              ngbTooltip="Clique para mais Detalhes">
+              <span class="ti-plus" *ngIf="!item.details"></span>
+              <span class="ti-minus" *ngIf="item.details"></span>
+            </a>
+          </div>
+
+          <div class="row">
+            <ng-container
+              *ngTemplateOutlet="layoutTemplate; context: { item: item, showingDetails: item.details }">
+            </ng-container>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="empty-data" *ngIf="!items.length">
+      <p [innerText]="emptyDataText || 'Your data is empty'"></p>
+    </div>
+  </div>

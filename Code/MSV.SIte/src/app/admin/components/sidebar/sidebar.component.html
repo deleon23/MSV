@@ -1,0 +1,23 @@
+ALO
+<div  class="sidebar sidebar-hide-to-small sidebar-shrink" [ngClass]="{ 'collapsed sidebar-hide': collapsed }">
+  <div class="nano">
+    <div class="nano-content">
+      <div class="logo">
+        <a routerLink="">
+          <img src="../../../../assets/images/brinks-original.png" alt="" />
+        </a>
+      </div>
+      <ul class="menuslabels">
+        <li routerLinkActive="active">
+          <a routerLink="/customer-search" class="menu" ngbTooltip="Pesquisa de Clientes ou Contratos">
+            <i class="ti-search"></i>  Pesquisa de Clientes</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/equipment-registration" class="menu" ngbTooltip="Cadastro de Equipamentos">
+            <i class="ti-harddrives"></i>  Cadastro de Equipamentos</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

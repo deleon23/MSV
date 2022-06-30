@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Códigos Reduzidos</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Selecionar Código Reduzido</strong>
+          </div>
+          <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control form-control-sm" [(ngModel)]="stringFilter">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <app-list
+                            [items]="codigosReduzidosFilter(stringFilter)"
+                            emptyDataText="Não existem Dados">
+                            <ng-template let-item="item">
+                              <!-- <div class="col-md-12 pointer" (click)="carregaPontoAtendimento(item.id)"> -->
+                              <div class="col-md-12 pointer">
+                                <span class="list-item-value" [innerHtml]="item.nome"></span>
+                              </div>
+                            </ng-template>
+                          </app-list>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,91 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Atributos</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Atributos do SubCliente</strong>
+        </div>
+        <div class="card-body">
+          <div class="row row-padding-bottom">
+            <div class="col-md-2">
+              <strong>Cliente:</strong>
+            </div>
+            <div class="col-md-10">
+              <input [(ngModel)]="cliente"
+                [typeahead]="clientes"
+                typeaheadOptionField="name"
+                class="form-control form-control-sm"
+                placeholder="Digite para iniciar a pesquisa">
+            </div>
+          </div>
+          <div class="row row-padding-bottom">
+            <div class="col-md-2">
+              <strong>Atributo:</strong>
+            </div>
+            <div class="col-md-10">
+              <select class="form-control form-control-sm">
+                <option selected>Selecione o Atributo...</option>
+                <option value="1">Atributo 1</option>
+                <option value="2">Atributo 2</option>
+              </select>
+            </div>
+          </div>
+          <div class="row row-padding-bottom">
+            <div class="col-md-2">
+              <strong>Código:</strong>
+            </div>
+            <div class="col-md-10">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control form-control-sm" placeholder="Digite o código" aria-label="Digite o código" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-sm btn-outline-secondary" type="button"><em class="ti-check-box"></em></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-padding-bottom">
+            <div class="col-md-12">
+              <table class="table table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Atributo</th>
+                    <th scope="col">Código</th>
+                    <th scope="col">Ativo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Loja</td>
+                    <td>Aeroporto Guarulhos</td>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label" for="customCheck1"></label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Filial</td>
+                    <td>São Paulo</td>
+                    <td>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                        <label class="custom-control-label" for="customCheck2"></label>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

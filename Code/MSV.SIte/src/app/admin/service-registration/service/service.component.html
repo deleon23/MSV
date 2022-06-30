@@ -1,0 +1,358 @@
+<div class="row"   >
+  <div class="col-md-12">
+    <div class="card" id="id_cardDadosServico">
+      <div class="card-header">
+        <strong>Dados do Serviço</strong>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Código:</label> {{precoServicoContrato.deS_CodigoInterno}}
+          </div>
+          <div class="col-md-6">
+            <label>Código Serviço:</label> PENDENTE
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Status:</label> PENDENTE
+          </div>
+          <div class="col-md-6">
+            <label>Composição:</label> {{precoServicoContrato.des_Composicao}}
+          </div>
+        </div>
+        <div class="row" id="id_rowDt_ServicoOperacional">
+          <div class="col-md-6">
+            <label>Início Serviço Operacional:</label>
+            <input type="text"
+              placeholder="Escolha uma data"
+              class="form-control form-control-sm"
+              bsDatepicker
+              [bsConfig]="{ isAnimated: true, containerClass: 'theme-dark-blue', dateInputFormat: 'DD/MM/YYYY' }"
+              [bsValue]="precoServicoContrato.dT_VIGENCIAINICIO">
+          </div>
+          <div class="col-md-6">
+            <label>Fim Serviço Operacional:</label>
+            <input type="text"
+              placeholder="Escolha uma data"
+              class="form-control form-control-sm"
+              bsDatepicker
+              [bsConfig]="{ isAnimated: true, containerClass: 'theme-dark-blue', dateInputFormat: 'DD/MM/YYYY' }"
+              [bsValue]="precoServicoContrato.dT_VIGENCIAFIM">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Produto:</label> {{precoServicoContrato.noM_Produto}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6" >
+            <label>Data Base:</label>
+            <input type="text"
+              placeholder="Escolha uma data"
+              class="form-control form-control-sm"
+              bsDatepicker
+              [bsConfig]="{ isAnimated: true, containerClass: 'theme-dark-blue', dateInputFormat: 'DD/MM/YYYY' }"
+              [bsValue]="precoServicoContrato.dT_BASE">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Filial Rateio:</label>
+            <input class="form-control form-control-sm" [(ngModel)]="precoServicoContrato.nom_Abvd_Filial">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" id="id_rowPonto">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>Ponto de Atendimento</strong>
+      </div>
+      <div class="card-body">
+        <div class="row row-padding-bottom">
+          <div class="col-md-4">
+            <select class="form-control form-control-sm">
+              <option selected>Controle</option>
+              <option value="1">Saval</option>
+              <option value="2">GTV</option>
+            </select>
+          </div>
+          <div class="col-md-8"></div>
+        </div>
+        <div class="row row-padding-top">
+          <div class="col-md-12">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control form-control-sm" placeholder="Origem" aria-label="Origem"
+                aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-sm btn-outline-secondary" type="button"><em
+                    class="ti-pencil-alt"></em></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control form-control-sm" placeholder="Destino" aria-label="Destino"
+                aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-sm btn-outline-secondary" type="button"><em
+                    class="ti-pencil-alt"></em></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-sm btn-primary margin-bottom" routerLink="/service-registration"><em
+                class="ti-plus"></em></button> Adicionar Ponto Atendimento
+          </div>
+          <div class="col-md-12">
+            <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Tipo de Ponto</th>
+                  <th scope="col">Origem</th>
+                  <th scope="col">Destino</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Controle</td>
+                  <td>BRINKS SÃO PAULO</td>
+                  <td>BRINKS RIBEIRÃO PRETO</td>
+                </tr>
+                <tr>
+                  <td>GTV</td>
+                  <td>BRINKS CAMPINAS</td>
+                  <td>BRINKS JUNDIAÍ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row" id="id_divFrequencia">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header" id="frequencias">
+                <strong>Frequências</strong>
+              </div>
+              <div class="card-body">
+                <div class="row" *ngFor="let precoFrequencia of precoServicoContrato.precoFrequencias">
+                  <div class="col-md-9">
+                    {{obterDescricaoFrequencia(precoFrequencia)}}
+                  </div>
+                  <div class="col-md-3">
+                    <a routerLink="/service-registration"><em class="ti-pencil"></em></a> Adicionar / Alterar
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col padding-right-0">
+    <div class="card" id="id_cardTipoTransporte">
+      <div class="card-header">
+        <strong>Tipo de Transporte</strong>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck1" [(ngModel)]="a1"
+                (change)="a2 = false; a3 = false; a4 = false;">
+              <label class="custom-control-label" for="customCheck1">Ponto Op.</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck2" [(ngModel)]="a2"
+                (change)="a1 = false; a3 = false; a4 = false;">
+              <label class="custom-control-label" for="customCheck2">Ponto Gen.</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck3" [(ngModel)]="a3"
+                (change)="a1 = false; a2 = false; a4 = false;">
+              <label class="custom-control-label" for="customCheck3">Ponto sem roteiro</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck4" [(ngModel)]="a4"
+                (change)="a1 = false; a2 = false; a3 = false;">
+              <label class="custom-control-label" for="customCheck4">Ponto de Ter.</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck5">
+              <label class="custom-control-label" for="customCheck5">Entrega Direta Operacional</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio1">Recolhimento</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio2">Suprimento</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Fluxo Operacional</label>
+            <select id="selectFluxoOperacional" class="form-control form-control-sm" [(ngModel)]="precoServicoContrato.coD_FLUXO">
+              <option *ngFor="let fluxoOperacional of fluxosOperacionais" value="{{fluxoOperacional.id}}" [selected]="fluxoOperacional.id == precoServicoContrato.coD_FLUXO">{{fluxoOperacional.descricao}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col padding-left-0" id="id_divTributacao" >
+      <div class="card">
+        <div class="card-header">
+          <strong>Tributação</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-5">
+              <label>0505 - CAMPINAS/SP</label>
+            </div>
+            <div class="col-md-5">
+              <strong>UF Origem Serviços:</strong> SP
+            </div>
+            <div class="col-md-2">
+              <strong>CFOP</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <select class="form-control form-control-sm" disabled>
+                <option value="1">0 - Internacional</option>
+                <option selected>1 - Municipal</option>
+                <option value="3">2 - Intermunicipal</option>
+                <option value="4">3 - Interestadual Região Sul e Sudeste</option>
+                <option value="5">4 - Interestadual Região Norte, Nordeste, Centro-Oeste e Espírito Santo</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="row" id="id_rowInformacoesEmbarque">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>Informações de Embarque</strong>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+            <label><strong>Média:</strong></label>
+            <input type="number" class="form-control form-control-sm" placeholder="0">
+          </div>
+          <div class="col-md-9"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label><strong>Descrição:</strong></label>
+            <input type="text" class="form-control form-control-sm">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label><strong>Observação:</strong></label>
+            <input type="text" class="form-control form-control-sm">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label><strong>Obser. GTV:</strong></label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control form-control-sm" aria-describedby="basic-addon2" text="tewwqe">
+              <div class="input-group-append">
+                <button class="btn btn-sm btn-outline-secondary" type="button"><em
+                    class="ti-plus"></em></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" id="id_rowProcessamentos">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <strong>Processamentos</strong>
+      </div>
+      <div class="card-body">
+        <div class="row row-padding-bottom">
+          <div class="col-md-4">
+            <strong>Contrato:</strong> 13009
+          </div>
+          <div class="col-md-8">
+            <strong>Código Reduzido:</strong> 027.699.191/0001-88 - ABENCOADA UEHARA COSMETICOS LTDA
+          </div>
+        </div>
+        <div class="row row-padding-bottom">
+          <div class="col-md-4">
+            <select class="form-control form-control-sm">
+              <option selected>Selecione...</option>
+              <option value="1">Saval</option>
+              <option value="2">Ticket</option>
+              <option value="3">Cheque</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Processamento</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">SubCliente</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Saval</td>
+                  <td>ABENCOADA UEHARA COSMETICOS LTDA</td>
+                  <td>ABENCOADA UEHARA SP VL ROMANOP</td>
+                </tr>
+                <tr>
+                  <td>Ticket</td>
+                  <td>ABENCOADA UEHARA COSMETICOS LTDA</td>
+                  <td>ABENCOADA UEHARA SP VL ROMANOP</td>
+                </tr>
+                <tr>
+                  <td>Cheques</td>
+                  <td>ABENCOADA UEHARA COSMETICOS LTDA</td>
+                  <td>ABENCOADA UEHARA SP VL ROMANOP</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,217 @@
+<div class="card">
+  <div class="card-header">
+    <div class="titulo">
+      <strong>Cadastro de Ponto de Atendimento</strong>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 padding-right-0" style="width: 97%;">
+      <div class="c-box c-box--arrow-right">
+        <div class="row row-padding-bottom">
+          <div class="col-md-12">
+            <div class="titulo">
+              {{pontoAtendimento.cli_RazaoSocial}}
+            </div>
+          </div>
+        </div>
+        <div class="row row-padding-bottom">
+          <div class="col-md-4">
+            <label>CNPJ:</label>
+            {{pontoAtendimento.cli_Cnpj ? (pontoAtendimento.cli_Cnpj.substring(1) | mask: '00.000.000/0000-00') : ''}}
+          </div>
+          <div class="col-md-4">
+            <label>Filial:</label> {{pontoAtendimento.nom_Abvd_Filial}}
+          </div>
+          <div class="col-md-4">
+            <label>Responsável:</label> {{pontoAtendimento.responsavel}}
+          </div>
+        </div>
+        <div class="row row-padding-bottom">
+          <div class="col-md-8">
+            <label>Vigência do Contrato:</label> {{pontoAtendimento.dT_VigenciaContrato}}
+          </div>
+          <div class="col-md-4">
+            <label>ID Contrato:</label> {{pontoAtendimento.cod_Contrato}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-sm btn-primary margin-bottom" routerLink="/service-registration"><em
+                class="ti-plus"></em></button> Copiar Reduzido
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 padding-left-0">
+      <div class="c-box c-box--arrow background-gray">
+        <div class="row row-padding-bottom">
+          <div class="col-md-12">
+            <div class="titulo">
+              {{pontoAtendimento.pontoOperacional ? pontoAtendimento.pontoOperacional : pontoAtendimento.subCli_RazaoSocial}}
+            </div>
+          </div>
+        </div>
+        <div class="row row-padding-bottom">
+          <div class="col-md-4">
+            <label>CNPJ:</label>
+            {{pontoAtendimento.cli_Cnpj ? (pontoAtendimento.subCli_Cnpj.substring(1) | mask: '00.000.000/0000-00') : ''}}
+          </div>
+          <div class="col-md-4">
+            <label>Código Reduzido:</label> {{pontoAtendimento.cod_Reduzido}} <a
+              (click)="selecionarCodigoReduzido()"><em class="ti-search blue"></em></a>
+          </div>
+        </div>
+        <div class="row row-padding-bottom">
+          <div class="col-md-8">
+            <label>Família do serviço: </label>
+            <select class="form-control form-control-sm" (change)="onChange($event.target.value)">
+              <option value="" selected>Todos</option>
+              <option *ngFor="let family of familiasProduto" [ngValue]="family">{{family.nom_FamiliaProduto}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-sm btn-primary margin-bottom" (click)="cadastrarAtributo()"><em
+                class="ti-arrow-top-right blue"></em></button> Atributos
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 padding-left-0">
+      <div class="c-box c-box--arrow background-white">
+        <div class="row">
+          <div class="col-md-12">
+            <tabset>
+              <tab heading="Dados Bancários do Cliente">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Cod. Banco</label>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control form-control-sm" placeholder="Cod. Banco" aria-label="Cod.Banco"
+                        aria-describedby="basic-addon2" [(ngModel)]="pontoAtendimento.cod_Banco">
+                    </div>
+                  </div>
+                  <div class="col-md-9">
+                    <label>Nome Banco</label>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control form-control-sm" placeholder="Nome Banco" aria-label="nom_Banco"
+                        aria-describedby="basic-addon2" [(ngModel)]="pontoAtendimento.nom_Banco">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label>Agência</label>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control form-control-sm" placeholder="Agencia" aria-label="Agencia"
+                        aria-describedby="basic-addon2" [(ngModel)]="pontoAtendimento.cod_Agencia">
+                    </div>
+                  </div>
+                  <div class="col-md-9">
+                    <label>Conta</label>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control form-control-sm" placeholder="Conta" aria-label="Conta"
+                        aria-describedby="basic-addon2" [(ngModel)]="pontoAtendimento.cod_Conta">
+                    </div>
+                  </div>
+                </div>
+              </tab>
+              <tab heading="Memorando">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea
+                        class="form-control"
+                        id="inputMemorando"
+                        rows="7"
+                        placeholder="Memorando"
+                        [(ngModel)]="pontoAtendimento.noM_MEMORANDO">
+                      </textarea>
+                    </div>
+                  </div>
+                </div>
+              </tab>
+            </tabset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card">
+        <div class="card-header">
+          <strong>Dados</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-5" style="z-index: 1">
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-sm btn-primary margin-bottom" routerLink="/service-registration"><em
+                      class="ti-plus"></em></button> Adicionar Serviço
+                </div>
+              </div>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="stringFilter"
+                placeholder="Pesquisa de Serviços...">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div id="testecomponentedeleon">
+                      <app-list [items]="servicosContratoFilter(stringFilter)" emptyDataText="Não existem Dados">
+                        <ng-template let-item="item" id="lstItemServicoContrato">
+                          <div class="col-md-12 pointer">
+                              <accordion id="accordionIdTeste" [closeOthers]="true" [isAnimated]="true">
+                                  <accordion-group id="accordionServicosContrato"  [isOpen]="!isOpen" [heading]="item.deS_ServicoLabelResum">
+                                    <app-list [items]="servicosContratoPorServicoFilter(item.id_Servico)" emptyDataText="Não existem Dados">
+                                        <ng-template let-item="item">
+                                            <div class="col-md-12 pointer"
+                                            (click)="carregaLayout(item.coD_FamiliaProduto, item.cod_Contrato, item.id_Servico)"
+                                            style="z-index: 0">
+                                            <span class="list-item-value child" [innerHtml]="item.deS_ServicoLabel"></span>
+                                            <div class="btn-group actions-block" dropdown>
+                                              <em id="button-basic dropdown-toggle" dropdownToggle
+                                                class="ti-settings btn-action btn-edit" aria-controls="dropdown-basic"></em>
+                                              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" style="margin-left: 35px;"
+                                                role="menu" aria-labelledby="button-basic">
+                                                <li role="menuitem" tooltip="Desativar Serviço" placement="right"><a
+                                                    class="dropdown-item"><em class="ti-na"></em></a></li>
+                                                <li role="menuitem" tooltip="Vincular Equipamento" placement="right"><a
+                                                    class="dropdown-item" *ngIf="item.vinculaEquipamento"><em
+                                                      class="ti-harddrives"></em></a></li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                          </ng-template>
+                                        </app-list>
+                                  </accordion-group>
+                              </accordion>
+                          </div>
+                        </ng-template>
+                      </app-list>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col" id="cadastroServicos">
+              <accordion [closeOthers]="true" [isAnimated]="true">
+                <accordion-group id="accordionClientes" heading="Informações de Clientes" [isOpen]="isOpen">
+                  <app-customer-information [precoServicoContrato]="precoServicoContrato"></app-customer-information>
+                </accordion-group>
+                <accordion-group id="accordionServicos" heading="Serviços" [isOpen]="!isOpen">
+                  <app-service [precoServicoContrato]="precoServicoContrato" [fluxosOperacionais]="fluxosOperacionais">
+                  </app-service>
+                </accordion-group>
+                <accordion-group id="accordionValores" heading="Valores" [isOpen]="!isOpen">
+                  <app-value id="accordionValores"></app-value>
+                </accordion-group>
+              </accordion>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

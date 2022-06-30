@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------
+src\app\admin\service-registration\service-registration.component.html
+-------------------------------------------------------------------------
+id="accordionClientes"
+id="accordionServicos"
+id="accordionValores"
+
+----------------------------------------------------------------------
+src\app\admin\service-registration\service\service.component.html
+----------------------------------------------------------------------
+<div class="row"  id="id_rowDadosServico" >
+<div class="row" id="id_rowDt_ServicoOperacional">
+<div class="row" id="id_divFrequencia">
+<div class="row" id="id_rowHorarioContratual">
+<div class="row" id="id_rowPonto">
+<div class="col padding-right-0" id="id_divTipoTransporte">
+<div class="col padding-left-0" id="id_divTributacao" >
+<div class="row" id="id_rowInformacoesEmbarque">
+<div class="row" id="id_rowProcessamentos">
+

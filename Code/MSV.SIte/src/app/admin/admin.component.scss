@@ -1,0 +1,12 @@
+.content-wrap {
+  transition: all .3s ease-in-out;
+  margin-left: 250px;
+
+  .container {
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 10px 0 rgba(0,0,0,0.19);
+  }
+
+  &.collapsed {
+    margin-left: 50px;
+  }
+}

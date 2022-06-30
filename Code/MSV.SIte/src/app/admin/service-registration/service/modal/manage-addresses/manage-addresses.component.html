@@ -1,0 +1,113 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Gerenciar Endereços de Coleta e Suprimento</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Endereços</strong>
+        </div>
+        <div class="card-body">
+          <div class="row row-padding-bottom">
+            <div class="col-md-2">
+              <strong>Origem:</strong>
+            </div>
+            <div class="col-md-10">
+              <input [(ngModel)]="origem"
+                [typeahead]="origens"
+                typeaheadOptionField="name"
+                class="form-control form-control-sm"
+                placeholder="Digite para iniciar a pesquisa">
+            </div>
+          </div>
+          <div class="row row-padding-bottom">
+            <div class="col-md-2">
+              <strong>Destino:</strong>
+            </div>
+            <div class="col-md-10">
+              <input [(ngModel)]="destino"
+                [typeahead]="destinos"
+                typeaheadOptionField="name"
+                class="form-control form-control-sm"
+                placeholder="Digite para iniciar a pesquisa">
+            </div>
+          </div>
+          <div class="row row-padding-bottom">
+            <div class="col-md-2">
+              <strong>Tipo de Ponto:</strong>
+            </div>
+            <div class="col-md-10">
+              <div class="input-group mb-3">
+                <select class="form-control form-control-sm">
+                  <option selected>Selecione o Tipo de Ponto...</option>
+                  <option value="1">Tipo de Ponto 1</option>
+                  <option value="2">Tipo de Ponto 2</option>
+                </select>
+                <div class="input-group-append">
+                  <button class="btn btn-sm btn-outline-secondary" type="button"><em class="ti-check-box"></em></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-padding-bottom">
+            <div class="col-md-12">
+              <table class="table table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Origem</th>
+                    <th scope="col">Destino</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Editar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0001</td>
+                    <td>Magazine Luiza - Franca - CNPJ 9999999</td>
+                    <td>Magazine Luiza - Ribeirão Preto - CNPJ 8888888</td>
+                    <td>Controle</td>
+                    <td>
+                      <a><em class="ti-pencil"></em></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0002</td>
+                    <td>Magazine Luiza - Franca - CNPJ 9999999</td>
+                    <td>Magazine Luiza - Ibitinga - CNPJ 8888888</td>
+                    <td>Saval</td>
+                    <td>
+                      <a><em class="ti-pencil"></em></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0003</td>
+                    <td>Magazine Luiza - Franca - CNPJ 9999999</td>
+                    <td>Magazine Luiza - Rio Preto - CNPJ 8888888</td>
+                    <td>GTV</td>
+                    <td>
+                      <a><em class="ti-pencil"></em></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>0004</td>
+                    <td>Magazine Luiza - Franca - CNPJ 9999999</td>
+                    <td>Magazine Luiza - Jundiaí - CNPJ 8888888</td>
+                    <td>--</td>
+                    <td>
+                      <a><em class="ti-pencil"></em></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

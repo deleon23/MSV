@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><strong>SAVAL</strong></div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <label>Cliente</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control form-control-sm" placeholder="Cliente" aria-label="Cliente" aria-describedby="basic-addon2" [(ngModel)]="precoServicoContrato.cliente">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Sub-Cliente</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control form-control-sm" placeholder="Sub-Cliente" aria-label="Sub-Cliente" aria-describedby="basic-addon2" [(ngModel)]="precoServicoContrato.subCliente">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label>CNAB</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control form-control-sm" placeholder="CNAB" aria-label="CNAB" aria-describedby="basic-addon2" [(ngModel)]="precoServicoContrato.matriz" >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="card" >
+      <div class="card-header"><strong>Faturamento</strong></div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <label>Cliente</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control form-control-sm" placeholder="Cliente" aria-label="Cliente" aria-describedby="basic-addon2" [(ngModel)]="precoServicoContrato.cliente_Fat" >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Sub-Cliente</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control form-control-sm" placeholder="Sub-Cliente" aria-label="Sub-Cliente" aria-describedby="basic-addon2" [(ngModel)]="precoServicoContrato.cliente_Fat_SubCliente" >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="input-group mb-3">
+              <label>Cliente - Tipo Nota (Trib. / Cobrança)</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control form-control-sm" placeholder="Cliente Tipo Nota" aria-label="Cliente Tipo Nota" aria-describedby="basic-addon2" [(ngModel)]="precoServicoContrato.deS_CodigoInterno">
+              <div class="input-group-append">
+                <button class="btn btn-sm btn-outline-secondary" type="button"><em class="ti-plus"></em></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
